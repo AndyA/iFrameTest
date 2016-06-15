@@ -7,7 +7,7 @@ $(function() {
     p.href = url;
     var unique = new Date()
       .getTime();
-    p.search += (p.search.length ? "&" : "?") + "_cb=" + unique;
+    p.search += (p.search.length ? "&" : "?") + "_force_load=" + unique;
     return p.href;
   }
 
@@ -19,7 +19,7 @@ $(function() {
       .split("&");
     var out = [];
     for (var i = 0; i < part.length; i++) {
-      if (/^_cb=\d+$/.test(part[i])) continue;
+      if (/^_force_load=\d+$/.test(part[i])) continue;
       out.push(part[i]);
     }
     p.search = out.length ? ("?" + out.join("&")) : "";
@@ -31,7 +31,6 @@ $(function() {
     p.href = url;
     return p.host;
   }
-
 
   if (window === window.top) {
     // If we're the top level replace page body with
@@ -55,7 +54,7 @@ $(function() {
       );
   } else {
     var href = cbClean(window.location.href);
-    // Replace browser URL and top level
+    // Replace browser URL and title
     window.top.history.replaceState({}, document.title, href);
     window.top.document.title = document.title;
 
