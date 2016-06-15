@@ -39,6 +39,9 @@ $(function() {
     $("body")
       .replaceWith(
         $("<body></body>")
+        .attr({
+          class: "iframe-wrapper"
+        })
         .append($("<iframe></iframe>")
           .attr({
             class: "site",
