@@ -65,7 +65,7 @@ $(function() {
       .each(function() {
         var thatHost = getHost($(this)
           .attr("href"));
-        if (thisHost !== thatHost) {
+        if (!this.hasAttribute("target") && thisHost !== thatHost) {
           $(this)
             .attr({
               target: "_parent"
