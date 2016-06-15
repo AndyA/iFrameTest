@@ -1,3 +1,12 @@
+<p class="links">
+  <h2>Links to other pages</h2>
+  <ul>
+    <li><a href="/page1.php">Page 1</a></li>
+    <li><a href="/page2.php">Page 2</a></li>
+    <li><a href="/page3.php">Page 3</a></li>
+  </ul>
+</p>
+
 <p>Unless one is wealthy there is no use in being a charming fellow. Romance is
 the privilege of the rich, not the profession of the unemployed. The poor should
 be practical and prosaic. It is better to have a permanent income than to be

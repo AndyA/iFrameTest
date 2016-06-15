@@ -7,7 +7,7 @@
     <script type="text/javascript" src="/js/iframe-helper.js"></script>
   </head>
   <body>
-    <h1>iFrame embed</h1>
+    <h1>Page 3</h1>
     <div class="content">
       <?php include __DIR__ . '/content.php'; ?>
     </div>
