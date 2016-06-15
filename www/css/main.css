@@ -14,9 +14,9 @@ body {
 
 .player {
   position: fixed;
+  border: none;
   background: rgba(255, 255, 255, 0.5);
-  height: 120px;
-  left: 0;
+  height: 40px;
+  width: 100%;
   bottom: 0;
-  right: 0;
 }

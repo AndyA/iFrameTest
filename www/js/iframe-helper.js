@@ -1,5 +1,9 @@
 $(function() {
 
+  var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+  var player = "/player.php";
+  var media = "/media/abcmusicpodcast-august2014.mp3";
+
   function cb(url) {
     var p = document.createElement("a");
     p.href = url;
@@ -20,14 +24,20 @@ $(function() {
       if (/^_cb=\d+$/.test(part[i])) continue;
       out.push(part[i]);
     }
-    p.search = out.length ? ("?" + out.join("&")) : "";
-    console.log("Stripped: " + p.href);
+    p.search = out.length ? ("?" + out.join("&")) : is_safari ? null : "";
     return p.href;
   }
 
-  var media = "/media/abcmusicpodcast-august2014.mp3";
+  function getHost(url) {
+    var p = document.createElement("a");
+    p.href = url;
+    return p.host;
+  }
+
 
   if (window === window.top) {
+    // If we're the top level replace page body with
+    // suitable iframes
     $("body")
       .replaceWith(
         $("<body></body>")
@@ -36,23 +46,30 @@ $(function() {
             class: "site",
             src: cb(window.location.href)
           }))
-        .append($("<div></div>")
+        .append($("<iframe></iframe>")
           .attr({
-            class: "player"
-          })
-          .append($("<audio></audio>")
-            .attr({
-              src: media,
-              controls: ""
-            }))));
-
-    $(".site")
-      .load(function(ev) {
-        console.log("iFrame loaded", ev);
-      });
+            class: "player",
+            src: player
+          }))
+      );
   } else {
-    var title = document.title;
-    window.top.history.replaceState({}, title, cbClean(window.location.href));
-    window.top.document.title = title;
+    var href = cbClean(window.location.href);
+    // Replace browser URL and top level
+    window.top.history.replaceState({}, document.title, href);
+    window.top.document.title = document.title;
+
+    // Fix up any off-site links
+    var thisHost = getHost(href);
+    $("a")
+      .each(function() {
+        var thatHost = getHost($(this)
+          .attr("href"));
+        if (thisHost !== thatHost) {
+          $(this)
+            .attr({
+              target: "_parent"
+            });
+        }
+      });
   }
 });
