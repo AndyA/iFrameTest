@@ -1,8 +1,6 @@
 $(function() {
 
-  var is_safari = navigator.userAgent.indexOf("Safari") > -1;
   var player = "/player.php";
-  var media = "/media/abcmusicpodcast-august2014.mp3";
 
   function cb(url) {
     var p = document.createElement("a");
@@ -24,7 +22,7 @@ $(function() {
       if (/^_cb=\d+$/.test(part[i])) continue;
       out.push(part[i]);
     }
-    p.search = out.length ? ("?" + out.join("&")) : is_safari ? null : "";
+    p.search = out.length ? ("?" + out.join("&")) : "";
     return p.href;
   }
 
