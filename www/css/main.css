@@ -3,19 +3,21 @@ body {
   background-color: black;
 }
 
+/* Styles that are specific to the iframe wrapper page */
+
 body.iframe-wrapper {
   padding: 0;
   margin: 0;
 }
 
-.site {
+body.iframe-wrapper .site {
   border: none;
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.player {
+body.iframe-wrapper .player {
   position: fixed;
   border: none;
   background: rgba(255, 255, 255, 0.5);
