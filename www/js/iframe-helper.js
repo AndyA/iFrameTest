@@ -2,7 +2,7 @@ $(function() {
 
   var player = "/player.php";
 
-  function cb(url) {
+  function forceLoad(url) {
     var p = document.createElement("a");
     p.href = url;
     var unique = new Date()
@@ -11,7 +11,7 @@ $(function() {
     return p.href;
   }
 
-  function cbClean(url) {
+  function forceLoadClean(url) {
     var p = document.createElement("a");
     p.href = url;
     if (p.search.length == 0) return p.href;
@@ -44,7 +44,7 @@ $(function() {
         .append($("<iframe></iframe>")
           .attr({
             class: "site",
-            src: cb(window.location.href)
+            src: forceLoad(window.location.href)
           }))
         .append($("<iframe></iframe>")
           .attr({
@@ -53,7 +53,7 @@ $(function() {
           }))
       );
   } else {
-    var href = cbClean(window.location.href);
+    var href = forceLoadClean(window.location.href);
     // Replace browser URL and title
     window.top.history.replaceState({}, document.title, href);
     window.top.document.title = document.title;
