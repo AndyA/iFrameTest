@@ -1,16 +1,39 @@
+<?php
+  $post_id = $_GET["id"];
+  if (!isset($post_id)) $post_id = 10024;
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>iFrame Monkey Business</title>
-    <link rel="stylesheet" href="/css/main.css" type="text/css" media="all" />
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="/js/iframe-helper.js"></script>
+    <title>River Radio Embed</title>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
-    <h1>iFrame embed</h1>
-    <div class="content">
-      <?php include __DIR__ . '/content.php'; ?>
-    </div>
+    <p>Let's imagine this is a site that wants to embed an NYC Downlow player. To
+    embed post ID <?php echo $post_id ?> (for example) they'd use the following code:</p>
+
+    <pre>
+      <code>
+  &lt;script 
+    src="https://thenycdownlow.com/embed/embed.js" 
+    type="text/javascript"
+    data-river-embed="<?php echo $post_id ?>"&gt;&lt;/script&gt;
+      </code>
+    </pre>
+
+    <p>Which would give them an embedded player like this:</p>
+    
+    <script 
+      src="https://thenycdownlow.com/embed/embed.js" 
+      type="text/javascript"
+      data-river-embed="<?php echo $post_id ?>"></script>
+
+    <p>The player styling is currently hardwired but can be changed to
+       suit e.g. Resident Advisor</p>
+
   </body>
 </html>
 
