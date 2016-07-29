@@ -1,12 +1,12 @@
 <?php
   $post_id = $_GET["id"];
   if (!isset($post_id)) $post_id = 10024;
+  $embed = "https://thenycdownlow.com/embed/embed.js";
  ?>
 <!DOCTYPE html>
 <html>
   <head>
     <title>River Radio Embed</title>
-    <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -18,7 +18,7 @@
     <pre>
       <code>
   &lt;script 
-    src="https://thenycdownlow.com/embed/embed.js" 
+    src="<?php echo $embed ?>" 
     type="text/javascript"
     data-river-embed="<?php echo $post_id ?>"&gt;&lt;/script&gt;
       </code>
@@ -27,7 +27,7 @@
     <p>Which would give them an embedded player like this:</p>
     
     <script 
-      src="https://thenycdownlow.com/embed/embed.js" 
+      src="<?php echo $embed ?>" 
       type="text/javascript"
       data-river-embed="<?php echo $post_id ?>"></script>
 
